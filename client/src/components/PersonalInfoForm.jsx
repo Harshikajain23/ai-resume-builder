@@ -1,4 +1,4 @@
-import { BriefcaseBusiness, Globe, Linkedin, Mail, MapPin, Phone, User } from 'lucide-react'
+import { BriefcaseBusiness, Globe, MailIcon, MapPin, Phone, User } from 'lucide-react'
 import React from 'react'
 import { FiLinkedin } from 'react-icons/fi'
 
@@ -10,7 +10,7 @@ const PersonalInfoForm = ({data, onChange, removeBackground, setRemoveBackground
 
     const fields = [
         {key: "full_name", label: "Full Name", icon: User, type: "text", required: true},
-        {key: "email", label: "Email Address", icon: Mail, type: "email", required: true},
+        {key: "email", label: "Email Address", icon: MailIcon, type: "email", required: true},
         {key: "phone", label: "Phone Number", icon: Phone, type: "tel"},
         {key: "location", label: "Location", icon: MapPin, type: "text"},
         {key: "profession", label: "Profession", icon: BriefcaseBusiness, type: "text"},
