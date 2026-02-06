@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin,Linkedin, Globe } from "lucide-react";
 
 const MinimalImageTemplate = ({ data, accentColor }) => {
     const formatDate = (dateStr) => {
@@ -40,7 +40,7 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                 </div>
 
                 {/* Left Sidebar */}
-                <aside className="col-span-1 border-r border-zinc-400 p-6 pt-0">
+                <aside className="col-span-1 border-r border-zinc-400 p-5 pt-0">
 
 
                     {/* Contact */}
@@ -67,6 +67,19 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                                     <span>{data.personal_info.location}</span>
                                 </div>
                             )}
+
+                             {data.personal_info?.linkedin && (
+                        <div className="flex items-center gap-2">
+                            <Linkedin className="size-4" style={{ color: accentColor }} />
+                            <span className="break-all">{data.personal_info.linkedin}</span>
+                        </div>
+                    )}
+                    {data.personal_info?.website && (
+                        <div className="flex items-center gap-2">
+                            <Globe className="size-4" style={{ color: accentColor }} />
+                            <span className="break-all">{data.personal_info.website}</span>
+                        </div>
+                    )}
                         </div>
                     </section>
 
