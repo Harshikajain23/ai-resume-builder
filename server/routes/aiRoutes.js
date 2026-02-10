@@ -1,0 +1,11 @@
+import express from 'express'
+import protect from '../middlewares/auth.Middleware.js';
+import { enhanceJobDescription, enhanceProfessionalSummary, uploadResume } from '../Controllers/aiController.js';
+
+const aiRouter = express.Router();
+
+aiRouter.post('/enhanced-pro-sum', protect, enhanceProfessionalSummary)
+aiRouter.post('/enhanced-job-desc', protect, enhanceJobDescription)
+aiRouter.post('/upload-resume', protect, uploadResume)
+
+export default aiRouter
