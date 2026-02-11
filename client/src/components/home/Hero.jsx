@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
+import { useSelector } from "react-redux";
 
 const Hero = () => {
+
+  const {user} = useSelector(state => state.auth)
   const [menuOpen, setMenuOpen] = useState(false);
 
   
@@ -46,16 +49,21 @@ const Hero = () => {
           {/* Desktop Button */}
           <div className="flex flex-row">
         
-          
-          <button className="hidden md:block bg-[#741a74] hover:bg-[#330a36] text-white px-6 py-3 mr-5 rounded-full cursor-pointer">
+          <Link to="/app?state=register">
+          <button className="hidden md:block bg-[#741a74] hover:bg-[#330a36] text-white px-6 py-3 mr-5 rounded-full cursor-pointer" hidden={user}>
             Sign Up
           </button>
+          </Link>
         
 
             <Link to='/app?state=login'>
-           <button className="hidden md:block bg-[#741a74]  hover:bg-[#330a36] text-white px-6 py-3 cursor-pointer rounded-full">
+           <button className="hidden md:block bg-[#741a74]  hover:bg-[#330a36] text-white px-6 py-3 cursor-pointer rounded-full" hidden={user}>
             Login
           </button>
+          </Link>
+
+          <Link to='/app' className='hidden md:block bg-[#741a74]  hover:bg-[#330a36] text-white px-8 py-2 cursor-pointer rounded-full transition-all' hidden={!user}>
+          Dashboard
           </Link>
           </div>
 

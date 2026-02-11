@@ -1,7 +1,14 @@
 import React from 'react'
 import { Lock, Mail, User } from "lucide-react";
+import api from '../configs/api';
+import { useDispatch } from 'react-redux';
+import { login } from '../app/features/authSlice';
+import toast from 'react-hot-toast';
+
 
 const Login = () => {
+
+    const dispatch = useDispatch()
 
     const query = new URLSearchParams(window.location.search)
     const urlState = query.get('state')
@@ -15,10 +22,21 @@ const Login = () => {
     })
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+  e.preventDefault();
 
-    }
+  try {
+    // Map frontend state to backend endpoint
+    const endpoint = state === "login" ? "login" : "register";
 
+    const { data } = await api.post(`/api/users/${endpoint}`, formData);
+
+    dispatch(login(data));
+    localStorage.setItem("token", data.token);
+    toast.success(data.message);
+  } catch (error) {
+    toast.error(error?.response?.data?.message || error.message);
+  }
+};
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData(prev => ({ ...prev, [name]: value }))
