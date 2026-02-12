@@ -1,8 +1,12 @@
-import { BriefcaseBusiness, Globe, MailIcon, MapPin, Phone, User } from 'lucide-react'
+import { BriefcaseBusiness, Globe, MailIcon, MapPin, Phone, User, XIcon } from 'lucide-react'
 import React from 'react'
 import { FiLinkedin } from 'react-icons/fi'
 
+
+
 const PersonalInfoForm = ({data, onChange, removeBackground, setRemoveBackground}) => {
+
+    
 
     const handleChange = (field, value)=> {
         onChange({...data, [field]: value})
@@ -35,6 +39,18 @@ const PersonalInfoForm = ({data, onChange, removeBackground, setRemoveBackground
                     )}
                     <input type="file" accept="image/jpeg, image/png" className='hidden' onChange={(e)=> handleChange("image", e.target.files[0]) }/>
             </label>
+
+            
+                    {/* Remove Photo Button */}
+                    {data.image && (
+                        <button
+                        type="button"
+                        onClick={() => handleChange("image", "")} // reset image
+                        className="absolute ml-14 top-37 text-sm text-black hover:text-slate-800 transition"
+                        >
+                        <XIcon className='size-4'/>
+                        </button>
+                    )}
             {typeof data.image === 'object' && (
                 <div className='flex flex-col gap-1 pl-4 text-sm'>
                     <p>Remove Background</p>
