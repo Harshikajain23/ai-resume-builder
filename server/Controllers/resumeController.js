@@ -1,4 +1,6 @@
-import Resume from "../Models/resume";
+import imageKit from "../configs/imageKit.js";
+import Resume from "../Models/Resume.js";
+
 
 // controller for creating a new resume
 // POST : /api/resume/create
@@ -29,7 +31,7 @@ export const deleteResume = async (req, res) => {
         const {resumeId} = req.params;
 
         // delete resume
-        await Resume.findOneAndDelete({userId, _Id: resumeId})
+        await Resume.findOneAndDelete({userId, _id: resumeId})
 
         // return success message
         return res.status(200).json({message: 'Resume deleted successfully'})
@@ -92,18 +94,56 @@ export const getPublicResumeById = async (req, res) => {
 //  PUT : /api/resumes/update
 
 export const updateResume = async (req, res) => {
-    try {
-        const userId = req.userId;
-        const {resumeId, resumeData, removeBackground} = req.body
-        const image = req.file;
 
-        let resumeDataCopy = JSON.parse(resumeData);
+    console.log(req.file);
 
-       const resume =  await Resume.findByIdAndUpdate({userId, _id: resumeId}, resumeDataCopy, {new: true})
+    console.log("BODY:", req.body);
+console.log("FILE:", req.file);
+  try {
+    const userId = req.userId;
+    const { resumeId, resumeData, removeBackground } = req.body;
+    const image = req.file;
 
-       return res.status(200).json({message: 'Saved successfully', resume})
+    let resumeDataCopy =
+      typeof resumeData === "string"
+        ? JSON.parse(resumeData)
+        : structuredClone(resumeData);
 
-        } catch (error) {
-         return res.status(400).json({message: error.message})
+    // 
+    if (image) {
+                const response = await imageKit.files.upload({
+                file: image.buffer.toString("base64"), 
+                fileName: image.originalname,
+            folder: "user-resumes",
+            transformation: {
+                pre:
+                "w-300,h-300,fo-face,z-0.75" +
+                (removeBackground ? ",e-bgremove" : "")
+            }
+            });
+
+       console.log("IMAGEKIT RESPONSE:", response);
+
+      resumeDataCopy.personal_info.image = response.url;
     }
-}
+
+    //
+        const resume = await Resume.findOneAndUpdate(
+        { userId, _id: resumeId },
+         resumeDataCopy,
+        { new: true }
+        );
+
+    return res.status(200).json({
+      message: "Saved successfully",
+      resume
+    });
+
+  } catch (error) {
+     console.error("UPDATE ERROR:", error);
+  return res.status(400).json({
+    message: error.message,
+    stack: error.stack
+  });
+  }
+};

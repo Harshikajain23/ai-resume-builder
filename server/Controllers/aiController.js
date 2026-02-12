@@ -1,4 +1,5 @@
 import Resume from "../Models/Resume.js";
+import ai from "../configs/ai.js";
 
 // controllers for enhancing a resume's professional summary
 
