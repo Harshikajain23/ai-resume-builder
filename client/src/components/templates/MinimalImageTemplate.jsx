@@ -58,7 +58,7 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                             {data.personal_info?.email && (
                                 <div className="flex items-center gap-2">
                                     <Mail size={14} style={{ color: accentColor }} />
-                                    <span>{data.personal_info.email}</span>
+                                    <span className="break-all">{data.personal_info.email}</span>
                                 </div>
                             )}
                             {data.personal_info?.location && (
@@ -70,13 +70,13 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
 
                              {data.personal_info?.linkedin && (
                         <div className="flex items-center gap-2">
-                            <Linkedin className="size-4" style={{ color: accentColor }} />
+                            <Linkedin className="size-14" style={{ color: accentColor }} />
                             <span className="break-all">{data.personal_info.linkedin}</span>
                         </div>
                     )}
                     {data.personal_info?.website && (
                         <div className="flex items-center gap-2">
-                            <Globe className="size-4" style={{ color: accentColor }} />
+                            <Globe className="size-14" style={{ color: accentColor }} />
                             <span className="break-all">{data.personal_info.website}</span>
                         </div>
                     )}
