@@ -123,8 +123,9 @@ const ResumeBuilder = () => {
       "/api/resumes/update",
       formData,
       {
-        headers: { Authorization: token },
-        "Content-Type": "multipart/form-data",
+        headers: { Authorization: token ,
+          "Content-Type": "multipart/form-data"},
+        
       }
     );
 
