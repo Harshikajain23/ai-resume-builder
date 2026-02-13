@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <>
       <footer className="mt-40 flex flex-wrap justify-center lg:justify-between overflow-hidden gap-10 md:gap-20 py-16 px-6 md:px-16 lg:px-24 xl:px-32 text-[13px] text-gray-500 bg-gradient-to-r from-[#F8ECE0] via-[#b60ca255]/50 to-[#F8ECE0]">
-        <div className="flex flex-wrap items-start gap-5 md:gap-[30px] xl:gap-[100px]">
+        <div className="flex flex-wrap items-start gap-5 md:gap-7.5 xl:gap-[100px]">
           <a href="#">
             <img src="/logo.svg" alt="logo" className="h-11 w-auto" />
           </a>
