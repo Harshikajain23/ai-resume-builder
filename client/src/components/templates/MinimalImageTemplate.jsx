@@ -68,18 +68,7 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                                 </div>
                             )}
 
-                             {data.personal_info?.linkedin && (
-                        <div className="flex items-center gap-2">
-                            <Linkedin className="size-14" style={{ color: accentColor }} />
-                            <span className="break-all">{data.personal_info.linkedin}</span>
-                        </div>
-                    )}
-                    {data.personal_info?.website && (
-                        <div className="flex items-center gap-2">
-                            <Globe className="size-14" style={{ color: accentColor }} />
-                            <span className="break-all">{data.personal_info.website}</span>
-                        </div>
-                    )}
+                             
                         </div>
                     </section>
 
