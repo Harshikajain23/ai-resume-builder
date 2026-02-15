@@ -1,9 +1,9 @@
-# ![Spotify Clone](spotify-1.JPG)
+# ![AI resume builder](spotify-1.JPG)
 
 # AI Resume Buidler
 
 A **web application that generates ATS-friendly, customizable resumes** using **AI (Gemini API)** and **ImageKit API**. Users can create, edit, share, and download professional resumes instantly.
----
+
 
 ##  Live Demo
 
