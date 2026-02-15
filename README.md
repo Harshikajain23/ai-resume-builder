@@ -1,4 +1,4 @@
-# ![AI resume builder](spotify-1.JPG)
+# ![AI resume builder](ai-resume-builder-1.JPG)
 
 # AI Resume Buidler
 
