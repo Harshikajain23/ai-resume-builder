@@ -8,7 +8,7 @@ A **web application that generates ATS-friendly, customizable resumes** using **
 
 ##  Live Demo
 
-[Check Live App Here]([https://byharshikajain.in])
+[Check Live App Here](https://byharshikajain.in)
 
 
 
