@@ -27,33 +27,46 @@ A **web application that generates ATS-friendly, customizable resumes** using **
 
 ##  Tech Stack
 
--**Frontend**: React, Tailwind CSS
--**Backend**: Node.js, Express
--**Other**: Axios for API requests, Gemini API, ImageKit API
+- **Frontend**: React, Tailwind CSS
+- **Backend**: Node.js, Express
+- **Other**: Axios for API requests, Gemini API, ImageKit API
 
 ---
 
-##  Installation
-
-1. **Clone the repository**
-
-
-2. **Configure environment variables**
-
-
-3. **Run the application**
-   
-Start backend
+## Step 1: Clone the repository
 ```
+git clone https://github.com/Harshikajain23/ai-resume-builder.git
+```
+
+Step 2: Navigate to the project directory
+cd ai-resume-builder
+
+Step 3: Configure environment variables
+
+Create a .env file in the server folder:
+
+PORT=5000
+AI_API_KEY=your_gemini_api_key
+IMAGEKIT_PUBLIC_KEY=your_imagekit_public_key
+IMAGEKIT_PRIVATE_KEY=your_imagekit_private_key
+
+Step 4: Install dependencies
+Backend
+cd server
+npm install
+
+Frontend
+cd ../client
+npm install
+
+Step 5: Run the application
+Start backend
 cd server
 npm start
-```
 
 Start frontend
-```
 cd ../client
 npm start
-```
 
 
 Frontend runs on: http://localhost:3000
